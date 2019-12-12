@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.serenegiant.widget.UVCCameraView
+            android:id="@+id/uvc_camera_view"
+            android:layout_width="400dp"
+            android:layout_height="300dp"/>
+        <ImageView
+            android:layout_marginStart="20dp"
+            android:id="@+id/iv_img"
+            android:layout_width="400dp"
+            android:layout_height="300dp"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:text="拍照"
+        android:id="@+id/photograph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="20dp"
+        android:text="文件选择器"
+        android:id="@+id/file_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/bt_get_img"
+        android:text="获取图片列表"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/bt_qd"
+        android:text="切灯"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
