@@ -1,6 +1,7 @@
 package com.hoppen.uvcctest;
 
 public class DetectInfo {
+
     public int detType;                   // 检测项目
     public String area;                   // 区域(大洲）
     public String race;                   // 人种
@@ -133,5 +134,24 @@ public class DetectInfo {
 
     public int getLevel() {
         return level;
+    }
+
+    @Override
+    public String toString() {
+        return "DetectInfo{" +
+                "detType=" + detType +
+                ", area='" + area + '\'' +
+                ", race='" + race + '\'' +
+                ", resistance=" + resistance +
+                ", elastic=" + elastic +
+                ", sex=" + sex +
+                ", season=" + season +
+                ", deviceType=" + deviceType +
+                ", lightType=" + lightType +
+                ", sdkVersion='" + sdkVersion + '\'' +
+                ", score=" + score +
+                ", finalScore=" + finalScore +
+                ", level=" + level +
+                '}';
     }
 }

@@ -15,7 +15,7 @@ class JxlTestActivity : AppCompatActivity(){
         setContentView(R.layout.activity_jxl_layout)
 
         val path = FileUtil.getExternalStoragePath(this)+"/demo.xls"
-        val title = arrayOf("detType","area","race","resistance","elastic","sex","season","deviceType","lightType")
+        val title = arrayOf("detType","area","race","resistance","elastic","sex","season","lightType")
         val list = ArrayList<ProjectBean>()
         for (i in 0..9){
             val bean = ProjectBean(""+i,"亚洲","黄种人","0.45f","50","男","3","0","2")

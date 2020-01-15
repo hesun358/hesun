@@ -1,6 +1,7 @@
 package com.hoppen.uvcctest
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -13,12 +14,18 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_test_layout.*
-import android.graphics.BitmapFactory
 import kotlin.random.Random
+import android.opengl.ETC1.getHeight
+import android.opengl.ETC1.getWidth
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
+
+
 
 class TestActivity : AppCompatActivity(){
 
-    var mbitmap : Bitmap? =null
     var s : String = ""
     var filePopup : FilePopupWindow? = null
 
@@ -32,10 +39,6 @@ class TestActivity : AppCompatActivity(){
             filePopup = FilePopupWindow(this)
             filePopup!!.showAtLocation(window.decorView,Gravity.CENTER,0,0)
         }
-
-        val options = BitmapFactory.Options()
-        options.inPreferredConfig = Bitmap.Config.ARGB_8888
-        mbitmap = BitmapFactory.decodeResource(this.getResources(),R.mipmap.a,options)
 
         bt_qd.setOnClickListener {
             val index = Random.nextInt(4)
@@ -60,10 +63,12 @@ class TestActivity : AppCompatActivity(){
                     }
 
                     override fun onNext(t: Bitmap) {
-                        val i = SkinDetect().faceDetect(t, DetectInfo(1,"asia","yellow",0.36f,0.42f,1,3,1
-                        ,0,"1.0",0,0,1), mbitmap,s)
-                        Log.e("TAG","i:"+i+"mbitmap:"+mbitmap)
-                        iv_img.setImageBitmap(mbitmap)
+                        val dst_bitmap = Bitmap.createBitmap(t.getWidth(), t.getHeight(), Bitmap.Config.ARGB_8888)
+                        // 初始化一个bitmap,存放返回的位图
+                        val date = DetectInfo(1,"asia","yellow",0.36f,0.42f,1,3,1,0,"1.0",0,0,1)
+                        val i = SkinDetect().faceDetect(t,date , dst_bitmap,s)
+                        Log.e("TAG","i:"+i+"mbitmap:"+dst_bitmap+"分数："+date.score)
+                        iv_img.setImageBitmap(dst_bitmap)
                     }
 
                     override fun onError(e: Throwable) {
